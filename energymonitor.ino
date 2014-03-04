@@ -13,7 +13,8 @@ byte mac[6] = { 0x90, 0xA2, 0xDA, 0x44, 0x34, 0x28 };
 char macstr[18];
 
 const int chan1_pin = 2;
-const float w_per_pulse = 0.625;
+//My meter flashes 1000 times per kWh
+onst float w_per_pulse = 1;
 const unsigned long ms_per_hour = 3600000UL;
 
 unsigned int chan1_count = 0;
@@ -107,7 +108,7 @@ void loop() {
     }
 
     snprintf(topic, 35, "house/power/meter/1/usage");
-    client.publish(topic, "0.625");
+    client.publish(topic, "1");
   }
 
   int dhcp_status = Ethernet.maintain();
